@@ -1,0 +1,8 @@
+name: SoloGui
+main: Guis\TheBlast\Main
+author: [TheBlast]
+version: 3.0
+api: 3.0.0
+command:
+ swsolo:
+  description: opens game gui
