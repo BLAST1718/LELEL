@@ -1,8 +1,8 @@
-name: SoloGui
+name: DuoGui
 main: Guis\TheBlast\Main
 author: [TheBlast]
 version: 3.0
 api: 3.0.0
 command:
- swsolo:
+ swduo:
   description: opens game gui
