@@ -1,6 +1,6 @@
 <?php
 
-namespace Guis\TheBlast;
+namespace Guiss\TheBlast;
 
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\InvMenuHandler;
@@ -20,9 +20,9 @@ class Main extends PluginBase{
 		if(!InvMenuHandler::isRegistered()){
 			InvMenuHandler::register($this);
 		}
-		$command = new PluginCommand("swsolo", $this);
+		$command = new PluginCommand("swduo", $this);
 		$command->setDescription("Open games gui");
-		$this->getServer()->getCommandMap()->register("swsolo", $command);
+		$this->getServer()->getCommandMap()->register("swduo", $command);
 	}
 
 	public function onDisable(){
@@ -31,32 +31,32 @@ class Main extends PluginBase{
 
 	public function onCommand(CommandSender $player, Command $cmd, string $label, array $args) : bool{
 		switch($cmd->getName()){
-			case "swsolo":
+			case "swduo":
 				if(!$player instanceof Player){
 					$player->sendMessage("Select games");
 					return true;
 				}
-				$this->swsolo($player);
+				$this->swduo($player);
 				break;
 		}
 		return true;
 	}
 
-	public function swsolo(Player $player){
+	public function swduo(Player $player){
 		$menu = InvMenu::create(InvMenu::TYPE_DOUBLE_CHEST);
 		$menu->readOnly();
 		$menu->setListener(\Closure::fromCallable([$this, "GUIListener"]));
-		$menu->setName("Solo Sw Games");
+		$menu->setName("Duos Sw Games");
 		$menu->send($player);
 		$inv = $menu->getInventory();
-		$quartz = Item::get(Item::QUARTZ_BLOCK)->setCustomName("Sw Graveyard");
-		$bow = Item::get(Item::BOW)->setCustomName("Sw Future");
-                $bed = Item::get(Item::BED)->setCustomName("Sw SnowLand");
-		$red_concrete = Item::get(Item::CONCRETE, 14)->setCustomName("Sw WildWest");
-		$grass = Item::get(Item::GRASS)->setCustomName("Sw Fortress");
-		$tnt = Item::get(Item::TNT)->setCustomName("Sw Castle");
-		$snowball = Item::get(Item::SNOWBALL)->setCustomName("Sw Monument");
-		$soul = Item::get(Item::SOUL_SAND)->setCustomName("Sw Village");
+		$quartz = Item::get(Item::QUARTZ_BLOCK)->setCustomName("Sw HellWorld");
+		$bow = Item::get(Item::BOW)->setCustomName("Sw NetherMassacre");
+                $bed = Item::get(Item::BED)->setCustomName("Sw Igloo");
+		$red_concrete = Item::get(Item::CONCRETE, 14)->setCustomName("Sw Pyramid");
+		$grass = Item::get(Item::GRASS)->setCustomName("Sw CoralReef");
+		$tnt = Item::get(Item::TNT)->setCustomName("Sw SnowCastle");
+		$snowball = Item::get(Item::SNOWBALL)->setCustomName("Sw Trapped");
+		$soul = Item::get(Item::SOUL_SAND)->setCustomName("Sw TheEnd");
 		$inv->setItem(27, $quartz);
 		$inv->setItem(11, $bow);
                 $inv->setItem(12, $bed);
@@ -73,12 +73,12 @@ class Main extends PluginBase{
 		$player = $action->getPlayer();
 		if($itemClicked->getId() == 155){
 			$action->getAction()->getInventory()->onClose($player);
-			$this->getServer()->dispatchCommand($player, "sw join Graveyard");
+			$this->getServer()->dispatchCommand($player, "sw join HellWorld");
 			return $action->discard();
 		}
 		if($itemClicked->getId() == 261){
 			$action->getAction()->getInventory()->onClose($player);
-			$this->getServer()->dispatchCommand($player, "say this map is not available yet");
+			$this->getServer()->dispatchCommand($player, "sw join NetherMassacre");
 			return $action->discard();
 		}
                 if($itemClicked->getId() == 355){
