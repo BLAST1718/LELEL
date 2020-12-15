@@ -49,7 +49,7 @@ class Main extends PluginBase{
 		$menu->setName("Solo Sw Games");
 		$menu->send($player);
 		$inv = $menu->getInventory();
-		$quartz = Item::get(Item::QUARTZ_BLOCK)->setCustomName(Sw Graveyard");
+		$quartz = Item::get(Item::QUARTZ_BLOCK)->setCustomName("Sw Graveyard");
 		$bow = Item::get(Item::BOW)->setCustomName("Sw Future");
                 $bed = Item::get(Item::BED)->setCustomName("Sw SnowLand");
 		$red_concrete = Item::get(Item::CONCRETE, 14)->setCustomName("Sw WildWest");
