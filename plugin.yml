@@ -1,8 +1,8 @@
-name: DuoGui
-main: Guiss\TheBlast\Main
+name: TrioGui
+main: Guisss\TheBlast\Main
 author: [TheBlast]
 version: 3.0
 api: 3.0.0
 command:
- swduo:
+ swtrio:
   description: opens game gui
