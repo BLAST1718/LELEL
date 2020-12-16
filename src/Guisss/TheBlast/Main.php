@@ -1,6 +1,6 @@
 <?php
 
-namespace Guiss\TheBlast;
+namespace Guisss\TheBlast;
 
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\InvMenuHandler;
@@ -20,9 +20,9 @@ class Main extends PluginBase{
 		if(!InvMenuHandler::isRegistered()){
 			InvMenuHandler::register($this);
 		}
-		$command = new PluginCommand("swduo", $this);
+		$command = new PluginCommand("swtrio", $this);
 		$command->setDescription("Open games gui");
-		$this->getServer()->getCommandMap()->register("swduo", $command);
+		$this->getServer()->getCommandMap()->register("swtrio", $command);
 	}
 
 	public function onDisable(){
@@ -31,32 +31,32 @@ class Main extends PluginBase{
 
 	public function onCommand(CommandSender $player, Command $cmd, string $label, array $args) : bool{
 		switch($cmd->getName()){
-			case "swduo":
+			case "swtrio":
 				if(!$player instanceof Player){
 					$player->sendMessage("Select games");
 					return true;
 				}
-				$this->swduo($player);
+				$this->swtrio($player);
 				break;
 		}
 		return true;
 	}
 
-	public function swduo(Player $player){
+	public function swtrio(Player $player){
 		$menu = InvMenu::create(InvMenu::TYPE_DOUBLE_CHEST);
 		$menu->readOnly();
 		$menu->setListener(\Closure::fromCallable([$this, "GUIListener"]));
-		$menu->setName("Duos Sw Games");
+		$menu->setName("Trios Sw Games");
 		$menu->send($player);
 		$inv = $menu->getInventory();
-		$quartz = Item::get(Item::QUARTZ_BLOCK)->setCustomName("Sw HellWorld");
-		$bow = Item::get(Item::BOW)->setCustomName("Sw NetherMassacre");
-                $bed = Item::get(Item::BED)->setCustomName("Sw Igloo");
-		$red_concrete = Item::get(Item::CONCRETE, 14)->setCustomName("Sw Pyramid");
-		$grass = Item::get(Item::GRASS)->setCustomName("Sw CoralReef");
-		$tnt = Item::get(Item::TNT)->setCustomName("Sw SnowCastle");
-		$snowball = Item::get(Item::SNOWBALL)->setCustomName("Sw Trapped");
-		$soul = Item::get(Item::SOUL_SAND)->setCustomName("Sw TheEnd");
+		$quartz = Item::get(Item::QUARTZ_BLOCK)->setCustomName("Sw Desert");
+		$bow = Item::get(Item::BOW)->setCustomName("Sw NetherCastle");
+                $bed = Item::get(Item::BED)->setCustomName("Sw Cave");
+		$red_concrete = Item::get(Item::CONCRETE, 14)->setCustomName("Sw Sand spikes");
+		$grass = Item::get(Item::GRASS)->setCustomName("Sw City");
+		$tnt = Item::get(Item::TNT)->setCustomName("Sw Valey");
+		$snowball = Item::get(Item::SNOWBALL)->setCustomName("Sw Racetrack");
+		$soul = Item::get(Item::SOUL_SAND)->setCustomName("Sw Maze");
 		$inv->setItem(27, $quartz);
 		$inv->setItem(11, $bow);
                 $inv->setItem(12, $bed);
