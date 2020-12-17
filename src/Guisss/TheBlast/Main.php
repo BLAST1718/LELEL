@@ -1,6 +1,6 @@
 <?php
 
-namespace Guisss\TheBlast;
+namespace Guissss\TheBlast;
 
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\InvMenuHandler;
@@ -20,9 +20,9 @@ class Main extends PluginBase{
 		if(!InvMenuHandler::isRegistered()){
 			InvMenuHandler::register($this);
 		}
-		$command = new PluginCommand("swtrio", $this);
+		$command = new PluginCommand("swvs", $this);
 		$command->setDescription("Open games gui");
-		$this->getServer()->getCommandMap()->register("swtrio", $command);
+		$this->getServer()->getCommandMap()->register("swvs", $command);
 	}
 
 	public function onDisable(){
@@ -31,22 +31,22 @@ class Main extends PluginBase{
 
 	public function onCommand(CommandSender $player, Command $cmd, string $label, array $args) : bool{
 		switch($cmd->getName()){
-			case "swtrio":
+			case "swvs":
 				if(!$player instanceof Player){
 					$player->sendMessage("Select games");
 					return true;
 				}
-				$this->swtrio($player);
+				$this->swvs($player);
 				break;
 		}
 		return true;
 	}
 
-	public function swtrio(Player $player){
+	public function swvs(Player $player){
 		$menu = InvMenu::create(InvMenu::TYPE_DOUBLE_CHEST);
 		$menu->readOnly();
 		$menu->setListener(\Closure::fromCallable([$this, "GUIListener"]));
-		$menu->setName("Trios Sw Games");
+		$menu->setName("Vs Sw Games");
 		$menu->send($player);
 		$inv = $menu->getInventory();
 		$quartz = Item::get(Item::QUARTZ_BLOCK)->setCustomName("Sw Desert");
