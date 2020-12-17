@@ -1,8 +1,8 @@
-name: TrioGui
+name: VsGui
 main: Guisss\TheBlast\Main
 author: [TheBlast]
 version: 3.0
 api: 3.0.0
 command:
- swtrio:
+ swvs:
   description: opens game gui
