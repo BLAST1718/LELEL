@@ -5,4 +5,8 @@ branches:
 projects:
   LELEL:
     path: ""
+    libs:
+      - src: muqsit/InvMenu/InvMenu
+        version: ^4.0.1
+        branch: master
 ...
